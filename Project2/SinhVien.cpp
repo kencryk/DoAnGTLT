@@ -65,7 +65,7 @@ string SinhVien::getStringSinhVien()
 	string gender;
 	if (this->Gender == 1) gender = "Nam";
 	if (this->Gender == 0) gender = "Nu";
-	return  to_string(this->MSSV ) + "," + this->FirstName + "," + this->LastName + "," + this->birthDay.toStringDate() + "," + gender + "," + this->classRoom.toStringClassRoom()
+	return  to_string(this->MSSV ) + "," + this->LastName + "," + this->FirstName + "," + this->birthDay.toStringDate() + "," + gender + "," + this->classRoom.toStringClassRoom()
 		+ "," + to_string(this->MathPoint) + "," + to_string(this->PhysicalPoint) + "," + to_string(this->ITPoint) + "," + to_string(this->AveragePoint)
 		+ "," + to_string(this->ScholarshipPoint);
 }
@@ -83,7 +83,7 @@ void SinhVien::XuatSinhVien(int NumericalOrder) {
 	if (this->Gender == 1) GioiTinh = "Nam";
 	if (this->Gender == 0) GioiTinh = "Nu";
 	if (NumericalOrder < 10) {
-		std::cout << NumericalOrder << setw(21) << this->MSSV << setw(20) << this->FirstName << setw(20) << this->LastName << setw(20) << this->birthDay.toStringDate() << setw(20)
+		std::cout << NumericalOrder << setw(21) << this->MSSV << setw(20) << this->LastName << setw(20) << this->FirstName << setw(20) << this->birthDay.toStringDate() << setw(20)
 			<< GioiTinh << setw(20) << this->classRoom.toStringClassRoom() << setw(20) 
 			<< setprecision(2) << fixed << this->MathPoint << setw(20) 
 			<< setprecision(2) << fixed << this->PhysicalPoint << setw(20)
@@ -92,7 +92,7 @@ void SinhVien::XuatSinhVien(int NumericalOrder) {
 			setw(20) << this->ScholarshipPoint << endl;
 	}
 	else {
-		std::cout << NumericalOrder << setw(20) << this->MSSV << setw(20) << this->FirstName << setw(20) << this->LastName << setw(20) << this->birthDay.toStringDate() << setw(20)
+		std::cout << NumericalOrder << setw(20) << this->MSSV << setw(20) << this->LastName << setw(20) << this->FirstName << setw(20) << this->birthDay.toStringDate() << setw(20)
 			<< GioiTinh << setw(20) << this->classRoom.toStringClassRoom() << setw(20) 
 			<< setprecision(2) << fixed << this->MathPoint << setw(20)
 			<< setprecision(2) << fixed << this->PhysicalPoint << setw(20)
@@ -111,6 +111,11 @@ string SinhVien::getFirstName()
 string SinhVien::getLastName()
 {
 	return this->LastName;
+}
+
+int SinhVien::getScholarshipPoint()
+{
+	return this->ScholarshipPoint;
 }
 
 

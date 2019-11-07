@@ -29,9 +29,10 @@ public:
 	void LinearSearch_Name();
 	
 
-	void SelectionSort(SinhVien*, bool(int, int)); 
-
+	void SortByMSSV(SinhVien*, bool(int, int)); 
+	void SortByClass(SinhVien*, bool(string, string));
 	void Show();
+	void ShowTotalScholarship();
 	// MENU:
 	void Menu();
 	void AddMenu();

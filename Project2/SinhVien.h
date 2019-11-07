@@ -30,5 +30,6 @@ public:
 	void XuatSinhVien(int );
 	string getFirstName();
 	string getLastName();
+	int getScholarshipPoint();
 
 };

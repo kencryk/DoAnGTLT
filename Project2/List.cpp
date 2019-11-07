@@ -1,9 +1,35 @@
-#include "List.h"
+﻿#include "List.h"
 bool TangDan(int left, int right) { 
 	return left > right;
 }
 bool GiamDan(int left, int right) { 
 	return left < right;
+}
+bool TangDan(string left, string right) {
+	return left > right;
+}
+bool GiamDan(string left, string right) {
+	return left < right;
+}
+string StandardizeString(string String) {
+	for (unsigned int i = 0; i < String.length(); i++) {
+		if (String[i] == '\t') {
+			String[i] = ' ';
+		}
+	}
+	while (String[String.length() - 1] == ' ') {
+		String.erase(String.length() - 1, 1);
+	}
+	while (String[0] == ' ')
+		String.erase(0, 1);
+	for (unsigned int i = 0; i < String.length(); i++) {
+		if (String[i] == ' ' && String[i + 1] == ' ') {
+			while (String[i + 1] == ' ') {
+				String.erase(i + 1, 1);
+			}
+		}
+	}
+	return String;
 }
 void Swap(SinhVien& a, SinhVien& b) {
 	SinhVien temp;
@@ -57,7 +83,10 @@ List::List(int x)
 List::List(const List& p)
 {
 	this->n = p.n;
-	this->sv = p.sv;
+	this->sv = new SinhVien[this->n];
+	for (int i = 1; i < this->n; i++) {
+		this->sv[i] = p.sv[i];
+	}
 }
 
 
@@ -241,19 +270,16 @@ void List::LinearSearch_Classroom()
 	std::cout << "\t \t Nhap so lop: ";
 	std::cin >> index;
 	std::cin.ignore();
+	std::cout << "Lop Can tim" " = ";
+	std::cout << year;
+	std::cout << major;
+	std::cout << index;
+	std::cout << "Cac sinh vien trong lop : " << std::endl;
 	for (int i = 0; i < n; i++)
 	{
 		if ((this->sv + i)->getClass().getYear() == year && (this->sv + i)->getClass().getMajor() == major && (this->sv + i)->getClass().getIndex() == index)
 		{
-			std::cout << " \t \t \t ";
-		//	std::cout << "Lop Can tim" " = ";
-			std::cout << year;
-			std::cout << major;
-			std::cout << index;
-			std::cout << endl;
-		//	std::cout << "Cac sinh vien trong lop : ";
-			std::cout << endl;
-			(this->sv + i)->XuatSinhVien(i);
+			(this->sv + i)->XuatSinhVien(i+1);
 			count = 1;
 		}
 	}
@@ -272,22 +298,17 @@ void List::LinearSearch_Name()
 	std::cout << " \t \t Nhap vao ten sinh vien ma ban muon tim kiem trong danh sach";
 	std::cout << endl;
 	std::string LastName;
-	std::cout << "\t \t LastName : ";
+	std::cout << "\t \t Ho : ";
 	getline(std::cin, LastName);
 	std::string FirstName;
-	std::cout << "\t \t FirstName : ";
+	std::cout << "\t \t Ten : ";
 	getline(std::cin, FirstName);
+	std::cout << "Ten Can tim" " = " << LastName << " " << FirstName << std::endl;
+	std::cout << "Cac sinh vien tim duoc : " << std::endl;
 	for (int i = 0; i < n; i++)
 	{
-		if ((this->sv + i)->getFirstName() == FirstName && (this->sv + i)->getLastName() == LastName)
+		if (StandardizeString((this->sv + i)->getFirstName()) == StandardizeString(FirstName) && StandardizeString((this->sv + i)->getLastName()) == StandardizeString(LastName))
 		{
-			std::cout << " \t \t \t ";
-			std::cout << "Ten Can tim" " = ";
-			std::cout << LastName;
-			std::cout << FirstName;
-			std::cout << endl;
-			std::cout << "Cac sinh vien tim duoc : ";
-			std::cout << endl;
 			(this->sv + i)->XuatSinhVien(i);
 			count = 1;
 		}
@@ -301,7 +322,7 @@ void List::LinearSearch_Name()
 }
 
 
-void List::SelectionSort(SinhVien* B, bool SoSanh(int, int))
+void List::SortByMSSV(SinhVien* B, bool SoSanh(int, int))
 {
 	for (int i = 0; i < this->n - 1; i++) {
 		for (int j = i; j < this->n; j++) {
@@ -309,6 +330,16 @@ void List::SelectionSort(SinhVien* B, bool SoSanh(int, int))
 		}
 	}
 }
+
+void List::SortByClass(SinhVien* B, bool SoSanh(string, string))
+{
+	for (int i = 0; i < this->n - 1; i++) {
+		for (int j = i; j < this->n; j++) {
+			if (SoSanh(B[i].getClass().toStringClassRoom(), B[j].getClass().toStringClassRoom())) Swap(B[i], B[j]);
+		}
+	}
+}
+
 
 
 void List::Show()
@@ -328,6 +359,41 @@ void List::Show()
 	}
 }
 
+void List::ShowTotalScholarship()
+{
+	int x = this->n;
+	// Khoi tao 1 List khác để dễ dàng thực hiện
+	SinhVien* p1 = new SinhVien[x];
+	for (int i = 0; i < this->n; i++) {
+		p1[i] = this->sv[i];
+	}
+	
+	this->SortByClass(p1,TangDan);
+
+	string Class = p1[0].getClass().toStringClassRoom();
+	string checkClass = p1[0].getClass().toStringClassRoom();
+	int TotalStudents = 0;
+	int TotalSchorlarship = 0;
+	std::cout << "Lop " << "\t\t" << "Tong so hoc sinh" << "\t\t" << "Tong hoc bong" << std::endl;
+	for (int i = 0; i < this->n; i++) {
+		Class = p1[i].getClass().toStringClassRoom();
+		if (Class == checkClass) {
+			TotalStudents += 1;
+			TotalSchorlarship += p1[i].getScholarshipPoint();
+		}
+		else {
+			std::cout << checkClass << "\t\t" << TotalStudents << "\t\t" << TotalSchorlarship << std::endl;
+			checkClass = p1[i].getClass().toStringClassRoom();
+			TotalStudents = 1;
+			TotalSchorlarship = p1[i].getScholarshipPoint();
+			if (i == this->n - 1) {
+				std::cout << Class << "\t\t" << TotalStudents << "\t\t" << TotalSchorlarship << std::endl;
+				checkClass = p1[i].getClass().toStringClassRoom();
+			}
+		}
+	}
+}
+
 void List::Menu()
 {
 	int LuaChon = 0;
@@ -335,7 +401,7 @@ void List::Menu()
 		std::cout << "=========================MENU======================" << std::endl;
 		std::cout << "1. Hien thi danh sach sinh vien " << std::endl;
 		std::cout << "2. Them Sinh Vien " << std::endl;
-		std::cout << "3. Cap nhat thong tin Sinh Vien. " << std::endl;
+		std::cout << "3. Hien thi bang thong ke theo lop. " << std::endl;
 		std::cout << "4. Xoa Sinh Vien " << std::endl;
 		std::cout << "5. Tim kiem doi tuong. " << std::endl;
 		std::cout << "6. Sap xep danh sach sinh vien " << std::endl;
@@ -357,7 +423,7 @@ void List::Menu()
 		}
 		case 3:
 		{
-			//this->CapNhat();
+			this->ShowTotalScholarship();
 			break;
 		}
 		case 4:
@@ -368,8 +434,6 @@ void List::Menu()
 		case 5:
 		{
 			this->SearchMenu();
-			//this->InterpolationSearch(giaPhong);
-			system("pause");
 			break;
 		}
 		case 6:
@@ -380,13 +444,13 @@ void List::Menu()
 				std::cin >> c;
 				if (c == 'T' || c == 't') {
 					std::cout << "Danh sach duoc sap xep tang dan: " << std::endl;
-					SelectionSort(this->sv, TangDan);
+					this->SortByClass(this->sv, TangDan);
 					this->Show();
 					break;
 				}
 				else if (c == 'G' || c == 'g') {
 					std::cout << "Danh sach duoc sap xep giam dan: " << std::endl;
-					SelectionSort(this->sv, GiamDan);
+					this->SortByClass(this->sv, GiamDan);
 					this->Show();
 					break;
 				}
@@ -550,10 +614,10 @@ void List::InputAllRecord(const char* filePath)
 		int _MSSV = stoi(MSSV);
 
 		// Get FirstName & set into Object SV
-		getline(ip, Ho, ',');
+		getline(ip, Ten, ',');
 
 		// Get LastName & set into Object SV
-		getline(ip, Ten, ',');
+		getline(ip, Ho, ',');
 
 		// Get Birthday & set into Object SV
 		getline(ip, NgaySinh, ',');
