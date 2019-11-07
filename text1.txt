@@ -1,0 +1,3 @@
+MSSV		Ho		Ten		Ngay Sinh		Lop		Diem Toan	Diem Ly		Diem Tin	Diem TB		Hoc Bong	
+102170259	Truong		Anh Vu		17/06/1999		17TCLC1		   8		   9		  10		  9		   200
+102170258	Nguyen		Tien Van	04/11/1999		17TCLC1		   8		   8		  9		  8.5		   150
