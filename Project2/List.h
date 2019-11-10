@@ -28,6 +28,9 @@ public:
 	void LinearSearch_Classroom();
 	void LinearSearch_Name();
 	
+	void Delete_Space(string&);
+	void Delete_Between_Word(string&);
+	void Delete_Between_Word_Class(string&);
 
 	void SortByMSSV(SinhVien*, bool(int, int)); 
 	void SortByClass(SinhVien*, bool(string, string));
