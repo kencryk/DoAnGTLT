@@ -327,7 +327,7 @@ void List::LinearSearch_Name()
 	SetColor(15);
 	for (int i = 0; i < n; i++)
 	{
-		if (StandardizeString((this->sv + i)->getFirstName()) == StandardizeString(FirstName) && StandardizeString((this->sv + i)->getLastName()) == StandardizeString(LastName))
+		if (to_upper((this->sv + i)->getFirstName()) == to_upper(FirstName) && to_upper((this->sv + i)->getLastName()) == to_upper(LastName))
 		{
 			(this->sv + i)->XuatSinhVien(i+1);
 			count = 1;

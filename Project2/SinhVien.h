@@ -7,8 +7,8 @@ class SinhVien {
 private: 
 	// 11 Components.
 	int MSSV;
-	string FirstName;
-	string LastName;
+	string FirstName; // Ten
+	string LastName; // Ho
 	BirthDay birthDay; 
 	int Gender; // Chu y: 0 : Nu, 1: Nam, con lai: LOI 
 	ClassRoom classRoom;
