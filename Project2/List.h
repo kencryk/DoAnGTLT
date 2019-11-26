@@ -1,5 +1,5 @@
 #pragma once
-#include "Library.h"
+
 #include "SinhVien.h"
 bool TangDan(int , int );
 bool GiamDan(int , int );

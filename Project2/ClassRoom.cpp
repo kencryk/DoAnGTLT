@@ -23,7 +23,7 @@ ClassRoom::ClassRoom(const ClassRoom& cl)
 
 std::string ClassRoom::toStringClassRoom()
 {
-	return (to_string(this->year) + this->major + to_string(this->index));
+	return (to_string(this->year) + to_upper(this->major) + to_string(this->index));
 }
 
 ClassRoom ClassRoom::inputClassRoom()

@@ -113,7 +113,7 @@ void List::ThemVaoDau()
 		this->sv[i] = p1[i];
 	}
 	delete[] p1;
-	std::cout << "Tao Sinh Vien Thanh Cong (Them vao dau Danh sach)." << std::endl;
+	//std::cout << "Tao Sinh Vien Thanh Cong (Them vao dau Danh sach)." << std::endl;
 
 }
 
@@ -137,7 +137,7 @@ void List::ThemVaoBatKy(int ViTri)
 		this->sv[i] = p1[i];
 	}
 	delete[] p1;
-	std::cout << "Tao sinh vien thanh cong (O vi tri bat ky) " << std::endl;
+	//std::cout << "Tao sinh vien thanh cong (O vi tri bat ky) " << std::endl;
 
 }
 
@@ -157,7 +157,7 @@ void List::ThemVaoCuoi()
 		this->sv[i] = p1[i];
 	}
 	delete[] p1;
-	std::cout << "Tao Sinh Vien Thanh Cong (Them vao cuoi danh sach)." << std::endl;
+	//std::cout << "Tao Sinh Vien Thanh Cong (Them vao cuoi danh sach)." << std::endl;
 
 }
 
@@ -197,7 +197,7 @@ void List::XoaDau()
 		this->sv[i] = p1[i];
 	}
 	delete[] p1;
-	std::cout << "Xoa Sinh Vien Thanh Cong (Xoa o dau) " << std::endl;
+//	std::cout << "Xoa Sinh Vien Thanh Cong (Xoa o dau) " << std::endl;
 }
 
 void List::XoaBatKy(int ViTri)
@@ -219,7 +219,7 @@ void List::XoaBatKy(int ViTri)
 		this->sv[i] = p1[i];
 	}
 	delete[] p1;
-	std::cout << "Xoa phong thanh cong (o vi tri bat ky)" << std::endl;
+	//std::cout << "Xoa thanh cong (o vi tri bat ky)" << std::endl;
 }
 
 void List::XoaCuoi()
@@ -237,7 +237,7 @@ void List::XoaCuoi()
 		this->sv[i] = p1[i];
 	}
 	delete[] p1;
-	std::cout << "Xoa Phong Thanh Cong (Xoa o Cuoi) " << std::endl;
+	//std::cout << "Xoa Thanh Cong (Xoa o Cuoi) " << std::endl;
 }
 
 void List::XoaTheoKhoa(int khoaHoc)
@@ -294,7 +294,7 @@ void List::LinearSearch_Classroom()
 	if (count == 0)
 	{
 		cout << endl;
-		cout << "Khong tim duoc lop " << endl;
+		cout << "Khong tim duoc sinh vien nao trong lop nay. " << endl;
 	}
 	cout << endl;
 }
@@ -315,12 +315,16 @@ void List::LinearSearch_Name()
 	getline(std::cin, FirstName);
 	Delete_Space(FirstName);
 	Delete_Between_Word(FirstName);
+	SetColor(14);
 	std::cout << "Ten Can tim" " = " << LastName << " " << FirstName << std::endl;
-	//std::cout << "Cac sinh vien tim duoc : " << std::endl;
-	cout << "STT" << setw(15) << "MSSV" << setw(20) << "Ho" << setw(22) << "Ten"
+	SetColor(2);
+	std::cout << setw(130) << "---------DANH SACH SINH VIEN -----------" << std::endl;
+	SetColor(3);
+	cout << "STT" << setw(18) << "MSSV" << setw(18) << "Ho" << setw(22) << "Ten"
 		<< setw(21) << "Ngay Sinh" << setw(24) << "Gioi Tinh" << setw(14) << "Lop" << setw(26) << "Diem Toan" <<
-		setw(20) << "Diem Ly" << setw(20) << "Diem Tin" <<
-		setw(20) << "Diem Trung Binh" << setw(20) << "Hoc Bong" << endl;
+		setw(18) << "Diem Ly" << setw(20) << "Diem Tin" <<
+		setw(23) << "Diem Trung Binh" << setw(20) << "Hoc Bong" << endl;
+	SetColor(15);
 	for (int i = 0; i < n; i++)
 	{
 		if (StandardizeString((this->sv + i)->getFirstName()) == StandardizeString(FirstName) && StandardizeString((this->sv + i)->getLastName()) == StandardizeString(LastName))
@@ -394,17 +398,22 @@ void List::SortByClass(SinhVien* B, bool SoSanh(string, string))
 void List::Show()
 {
 	if (this->n != 0) {
-		std::cout << "---------DANH SACH SINH VIEN -----------" << std::endl;
-		cout << "STT" << setw(15) << "MSSV" << setw(20) << "Ho" << setw(22) << "Ten"
+		SetColor(2);
+		std::cout << setw(130) << "---------DANH SACH SINH VIEN -----------" << std::endl;
+		SetColor(3);
+		cout << "STT" << setw(18) << "MSSV" << setw(18) << "Ho" << setw(22) << "Ten"
 			<< setw(21) << "Ngay Sinh" << setw(24) << "Gioi Tinh" << setw(14) << "Lop" << setw(26) << "Diem Toan" <<
-			setw(20) << "Diem Ly" << setw(20) << "Diem Tin" <<
-			setw(20) << "Diem Trung Binh" << setw(20) << "Hoc Bong" << endl;
+			setw(18) << "Diem Ly" << setw(20) << "Diem Tin" <<
+			setw(23) << "Diem Trung Binh" << setw(20) << "Hoc Bong" << endl;
+		SetColor(15);
 		for (int i = 0; i < this->n; i++) {
 			this->sv[i].XuatSinhVien(i+1);
 		}
 	}
 	else {
-		std::cout << "KHONG CO SINH VIEN. " << std::endl;
+		SetColor(4);
+		std::cout << setw(130) << "KHONG CO SINH VIEN. " << std::endl;
+		SetColor(15);
 	}
 }
 
@@ -423,7 +432,8 @@ void List::ShowTotalScholarship()
 	string checkClass = p1[0].getClass().toStringClassRoom();
 	int TotalStudents = 0;
 	int TotalSchorlarship = 0;
-	std::cout << "Lop " << "\t \t " << "Tong so hoc sinh" << "\t \t " << "Tong hoc bong" << std::endl;
+	SetColor(2);
+	std::cout << setw(80) << "Lop " << setw(40) << "Tong so hoc sinh" << setw(40) << "Tong hoc bong" << std::endl;
 	for (int i = 0; i < this->n; i++) {
 		Class = p1[i].getClass().toStringClassRoom();
 		if (Class == checkClass) {
@@ -431,14 +441,16 @@ void List::ShowTotalScholarship()
 			TotalSchorlarship += p1[i].getScholarshipPoint();
 		}
 		else {
-			std::cout << checkClass << "\t \t " << TotalStudents << "\t \t \t \t " << TotalSchorlarship << std::endl;
+			SetColor(14);
+			std::cout << setw(80) << checkClass << setw(35) << TotalStudents << setw(40) << TotalSchorlarship << std::endl;
 			checkClass = p1[i].getClass().toStringClassRoom();
 			TotalStudents = 1;
 			TotalSchorlarship = p1[i].getScholarshipPoint();
 			if (i == this->n - 1) {
-				std::cout << Class << "\t \t " << TotalStudents << "\t \t \t \t " << TotalSchorlarship << std::endl;
+				std::cout << setw(80) << Class << setw(35) << TotalStudents << setw(40) << TotalSchorlarship << std::endl;
 				checkClass = p1[i].getClass().toStringClassRoom();
 			}
+			SetColor(15);
 		}
 	}
 }
@@ -447,16 +459,19 @@ void List::Menu()
 {
 	int LuaChon = 0;
 	while (LuaChon != 7) {
-		std::cout << "================================  MENU  ================================" << std::endl;
-		std::cout << "\t \t 1. Hien thi danh sach sinh vien " << std::endl;
-		std::cout << "\t \t 2. Them Sinh Vien " << std::endl;
-		std::cout << "\t \t 3. Hien thi bang thong ke theo lop. " << std::endl;
-		std::cout << "\t \t 4. Xoa Sinh Vien " << std::endl;
-		std::cout << "\t \t 5. Tim kiem doi tuong. " << std::endl;
-		std::cout << "\t \t 6. Sap xep danh sach sinh vien " << std::endl;
-		std::cout << "\t \t 7. Ghi vao file va thoat chuong trinh " << std::endl;
+		SetColor(2);
+		std::cout.width(150); std::cout << "================================  MENU  ================================" << std::endl;
+		SetColor(12);
+		std::cout.width(124); std::cout << std::right << "1. Hien thi danh sach sinh vien:" << std::endl;
+		std::cout.width(110); std::cout << std::right << "2. Them Sinh Vien:" << std::endl;
+		std::cout.width(127); std::cout << std::right << "3. Hien thi bang thong ke theo lop:" << std::endl;
+		std::cout.width(109); std::cout << std::right << "4. Xoa Sinh Vien:" << std::endl;
+		std::cout.width(114); std::cout << std::right << "5. Tim kiem doi tuong:" << std::endl;
+		std::cout.width(139); std::cout << std::right << "6. Sap xep danh sach sinh vien (Theo Khoa Hoc):" << std::endl;
+		std::cout.width(130); std::cout << std::right << "7. Ghi vao file va thoat chuong trinh:" << std::endl;
+		SetColor(15);
 		do {
-			std::cout << "\t \t Nhap lua chon cua ban: "; std::cin >> LuaChon;
+			std::cout.width(120); std::cout << std::right << "Nhap lua chon cua ban:  "; std::cin >> LuaChon;
 			if (LuaChon < 1 || LuaChon > 7) std::cout << endl <<  "\t \t Yeu cau nhap lai. " << std::endl;
 		} while (LuaChon < 1 || LuaChon > 7);
 		switch (LuaChon) {
@@ -464,6 +479,7 @@ void List::Menu()
 		{
 			this->Show();
 			system("pause");
+			system("cls");
 			break;
 		}
 		case 2:
@@ -474,6 +490,8 @@ void List::Menu()
 		case 3:
 		{
 			this->ShowTotalScholarship();
+			system("pause");
+			system("cls");
 			break;
 		}
 		case 4:
@@ -490,7 +508,8 @@ void List::Menu()
 		{
 			char c;
 			do {
-				std::cout << "Ban muon sap xep tang dan hay giam dan. Nhap T de sap xep tang dan. Nhap G de sap xep giam dan:";
+				SetColor(14);
+				std::cout.width(100); std::cout << std::right << "Ban muon sap xep tang dan hay giam dan. Nhap T de sap xep tang dan. Nhap G de sap xep giam dan:";
 				std::cin >> c;
 				if (c == 'T' || c == 't') {
 					std::cout << "\t \t Danh sach duoc sap xep tang dan: " << std::endl;
@@ -508,11 +527,15 @@ void List::Menu()
 					std::cout << "\t \t Ban nhap sai. Moi ban nhap lai" << std::endl;
 				}
 			} while (true);
+			system("pause");
+			system("cls");
 			break;
 		}
 		default:
+		{
 			this->WriteRecord("../test.csv");
 			break;
+		}
 		}
 		if (LuaChon == 7) break;
 	}
@@ -521,15 +544,20 @@ void List::Menu()
 void List::AddMenu()
 {
 	int LuaChon = 0;
-	while (LuaChon != 7) {
-		std::cout << "================================  ADD MENU  ================================" << std::endl;
-		std::cout << "\t \t 1. Them sinh vien vao dau danh sach " << std::endl;
-		std::cout << "\t \t 2. Them sinh vien vao cuoi danh sach " << std::endl;
-		std::cout << "\t \t 3. Them sinh vien vao vi tri bat ky . " << std::endl;
-		std::cout << "\t \t 4. Quay tro lai menu chinh " << std::endl;
+	while (LuaChon != 4) {
+		SetColor(2);
+		std::cout.width(150); std::cout << "================================  ADD MENU  ================================" << std::endl;
+		SetColor(9);
+		std::cout.width(129); std::cout << std::right << "1. Them sinh vien vao dau danh sach:" << std::endl;
+		std::cout.width(130); std::cout << std::right << "2. Them sinh vien vao cuoi danh sach:" << std::endl;
+		std::cout.width(129); std::cout << std::right << "3. Them sinh vien vao vi tri bat ky:" << std::endl;
+		std::cout.width(120); std::cout << std::right << "4. Quay tro lai menu chinh:" << std::endl;
+		SetColor(15);
 		do {
-			std::cout << "\t \t Nhap lua chon cua ban: "; std::cin >> LuaChon;
-			if (LuaChon < 1 || LuaChon > 4) std::cout << endl << "\t \t Yeu cau nhap lai. " << std::endl;
+			std::cout.width(120); std::cout << std::right << "Nhap lua chon cua ban:  "; std::cin >> LuaChon;
+			if (LuaChon < 1 || LuaChon > 4) {
+				std::cout.width(130); std::cout << std::right << "Yeu cau nhap lai. " << std::endl;
+			}
 		} while (LuaChon < 1 || LuaChon > 4);
 		switch (LuaChon) {
 		case 1:
@@ -538,6 +566,7 @@ void List::AddMenu()
 			std::cout << "\t \t Da them sinh vien vao dau danh sach" << endl;
 			this->Show();
 			system("pause");
+			system("cls");
 			break;
 		}
 		case 2:
@@ -546,6 +575,7 @@ void List::AddMenu()
 			std::cout << "\t \t Da them sinh vien vao cuoi danh sach" << endl;
 			this->Show();
 			system("pause");
+			system("cls");
 			break;
 		}
 		case 3:
@@ -561,14 +591,17 @@ void List::AddMenu()
 			std::cout << "\t \t Da them sinh vien vao vi tri " << ViTri << endl;
 			this->Show();
 			system("pause");
+			system("cls");
 			break;
 		}
 		default:
+		{
 			system("cls");
-			this->Menu();
+			//this->Menu();
 			break;
 		}
-		break;
+		}
+		if (LuaChon == 4) break;
 	}
 }
 
@@ -576,15 +609,18 @@ void List::DeleteMenu()
 {
 	int LuaChon = 0;
 	while (LuaChon != 5) {
-		std::cout << "================================  DELETE MENU  ================================" << std::endl;
-		std::cout << "\t \t 1. Xoa sinh vien o dau danh sach " << std::endl;
-		std::cout << "\t \t 2. Xoa sinh vien o cuoi danh sach " << std::endl;
-		std::cout << "\t \t 3. Xoa sinh vien o vi tri bat ky . " << std::endl;
-		std::cout << "\t \t 4. Xoa sinh vien o 1 khoa bat ky. " << std::endl;
-		std::cout << "\t \t 5. Quay tro lai menu chinh " << std::endl;
+		SetColor(2);
+		std::cout.width(150); std::cout << "================================  DELETE MENU  ================================" << std::endl;
+		SetColor(11);
+		std::cout.width(129); std::cout << std::right << "1. Xoa sinh vien o dau danh sach:" << std::endl;
+		std::cout.width(130); std::cout << std::right << "2. Xoa sinh vien o cuoi danh sach:" << std::endl;
+		std::cout.width(129); std::cout << std::right << "3. Xoa sinh vien o vi tri bat ky:" << std::endl;
+		std::cout.width(129); std::cout << std::right << "4. Xoa sinh vien o 1 khoa bat ky:" << std::endl;
+		std::cout.width(123); std::cout << std::right << "5. Quay tro lai menu chinh:" << std::endl;
+		SetColor(15);
 		do {
-			std::cout << "\t \t Nhap lua chon cua ban: "; std::cin >> LuaChon;
-			if (LuaChon < 1 || LuaChon > 4) std::cout << endl << "\t \t Yeu cau nhap lai. " << std::endl;
+			std::cout.width(120); std::cout << std::right << "Nhap lua chon cua ban:   "; std::cin >> LuaChon;
+			if (LuaChon < 1 || LuaChon > 5) { std::cout.width(130); std::cout << std::right << "Yeu cau nhap lai. " << std::endl; }
 		} while (LuaChon < 1 || LuaChon > 5);
 		switch (LuaChon) {
 		case 1:
@@ -593,6 +629,7 @@ void List::DeleteMenu()
 			std::cout << "Da xoa sinh vien o dau danh sach" << endl;
 			this->Show();
 			system("pause");
+			system("cls");
 			break;
 		}
 		case 2:
@@ -601,6 +638,7 @@ void List::DeleteMenu()
 			std::cout << "Da xoa sinh vien o cuoi danh sach" << endl;
 			this->Show();
 			system("pause");
+			system("cls");
 			break;
 		}
 		case 3:
@@ -616,6 +654,7 @@ void List::DeleteMenu()
 			std::cout << "\t \t Da xoa sinh vien o vi tri " << ViTri << endl;
 			this->Show();
 			system("pause");
+			system("cls");
 			break;
 		}
 		case 4:
@@ -626,14 +665,17 @@ void List::DeleteMenu()
 			std::cout << "Da xoa khoa hoc: " << khoaHoc << endl;
 			this->Show();
 			system("pause");
+			system("cls");
 			break;
 		}
 		default:
+		{
 			system("cls");
-			this->Menu();
+		//	this->Menu();
 			break;
 		}
-		break;
+		}
+	if (LuaChon == 5) 	break;
 	}
 }
 
@@ -642,30 +684,35 @@ void List::SearchMenu()
 	int LuaChon = 0;
 	while (LuaChon != 3)
 	{
-		std::cout << "================================  Search MENU  ================================" << std::endl;
-		std::cout << "\t \t 1. Tim kiem theo ten Lop " << std::endl;
-		std::cout << "\t \t 2. Tim kiem theo ten sinh vien " << std::endl;
-		std::cout << "\t \t 3. Quay tro lai menu chinh " << std::endl;
+		SetColor(2);
+		std::cout.width(150); std::cout << std::right << "================================  Search MENU  ================================" << std::endl;
+		SetColor(13);
+		std::cout.width(117); std::cout << std::right << "1. Tim kiem theo ten Lop:" << std::endl;
+		std::cout.width(123); std::cout << std::right << "2. Tim kiem theo ten Sinh Vien:" << std::endl;
+		std::cout.width(119); std::cout << std::right << "3. Quay tro lai menu chinh:" << std::endl;
+		SetColor(15);
 		do {
-			std::cout << "\t \t Nhap lua chon cua ban: "; std::cin >> LuaChon;
-			if (LuaChon < 1 || LuaChon > 4) std::cout << endl <<  "\t \t Yeu cau nhap lai. " << std::endl;
+			std::cout.width(120); std::cout << std::right << "Nhap lua chon cua ban: "; std::cin >> LuaChon;
+			if (LuaChon < 1 || LuaChon > 4) { std::cout.width(130); std::cout << std::right << "Yeu cau nhap lai. " << std::endl; }
 		} while (LuaChon < 1 || LuaChon > 3);
 		switch (LuaChon) {
 		case 1:
 		{
 			this->LinearSearch_Classroom();
 			system("pause");
+			system("cls");
 			break;
 		}
 		case 2:
 		{
 			this->LinearSearch_Name();
 			system("pause");
+			system("cls");
 			break;
 		}
 		default:
 			system("cls");
-			this->Menu();
+	//		this->Menu();
 			break;
 		}
 		break;
