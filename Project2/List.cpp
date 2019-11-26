@@ -11,26 +11,6 @@ bool TangDan(string left, string right) {
 bool GiamDan(string left, string right) {
 	return left < right;
 }
-string StandardizeString(string String) {
-	for (unsigned int i = 0; i < String.length(); i++) {
-		if (String[i] == '\t') {
-			String[i] = ' ';
-		}
-	}
-	while (String[String.length() - 1] == ' ') {
-		String.erase(String.length() - 1, 1);
-	}
-	while (String[0] == ' ')
-		String.erase(0, 1);
-	for (unsigned int i = 0; i < String.length(); i++) {
-		if (String[i] == ' ' && String[i + 1] == ' ') {
-			while (String[i + 1] == ' ') {
-				String.erase(i + 1, 1);
-			}
-		}
-	}
-	return String;
-}
 void Swap(SinhVien& a, SinhVien& b) {
 	SinhVien temp;
 	temp = a;
