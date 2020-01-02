@@ -11,6 +11,5 @@ int main() {
 	system("cls");
 	l.InputAllRecord("../test.csv");
 	l.Menu();
-
 	return 0;
 }

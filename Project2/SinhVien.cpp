@@ -65,7 +65,7 @@ string SinhVien::getStringSinhVien()
 	string gender;
 	if (this->Gender == 1) gender = "Nam";
 	if (this->Gender == 0) gender = "Nu";
-	return  to_string(this->MSSV ) + "," + to_upper(this->LastName) + "," + to_upper(this->FirstName) + "," + this->birthDay.toStringDate() + "," + gender + "," + this->classRoom.toStringClassRoom()
+	return  to_string(this->MSSV ) + "," + to_upper(this->FirstName) + "," + to_upper(this->LastName) + "," + this->birthDay.toStringDate() + "," + gender + "," + this->classRoom.toStringClassRoom()
 		+ "," + to_string(this->MathPoint) + "," + to_string(this->PhysicalPoint) + "," + to_string(this->ITPoint) + "," + to_string(this->AveragePoint)
 		+ "," + to_string(this->ScholarshipPoint);
 }

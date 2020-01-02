@@ -28,7 +28,7 @@ std::string ClassRoom::toStringClassRoom()
 
 ClassRoom ClassRoom::inputClassRoom()
 {
-	// Chua kiem tra dieu kien nhap vao: 
+
 	int year;
 	std::string major;
 	int index;

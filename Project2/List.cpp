@@ -42,14 +42,20 @@ SinhVien TaoSinhVien() {
 	std::cout << "Nhap lop ma sinh vien dang hoc: "<< std::endl;
 	ClassRoom cl = ClassRoom().inputClassRoom();
 	double mathPoint;
-	std::cout << "Nhap diem toan: ";
-	std::cin >> mathPoint;
+	do {
+		std::cout << "Nhap diem toan: ";
+		std::cin >> mathPoint;
+	} while (mathPoint < 0 || mathPoint > 10);
 	double physicalPoint;
-	std::cout << "Nhap diem ly: ";
-	std::cin >> physicalPoint;
+	do {
+		std::cout << "Nhap diem ly: ";
+		std::cin >> physicalPoint;
+	} while (mathPoint < 0 || mathPoint > 10);
 	double itPoint;
-	std::cout << "Nhap diem tin: ";
-	std::cin >> itPoint;
+	do {
+		std::cout << "Nhap diem tin: ";
+		std::cin >> itPoint;
+	} while (itPoint < 0 || itPoint > 10);
 	SinhVien sv(mssv, firstName, lastName, bd, checkGender, cl, mathPoint, physicalPoint, itPoint);
 	return sv;
 }
